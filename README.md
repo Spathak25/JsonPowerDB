@@ -24,3 +24,6 @@ This min-project can perform all CRUD operations using JsonPowerDB.JPDB has read
 * Real time application for data analytics.
 * Live working HTML templates.
 * Any software application that needs backend DB. (Dynamic web-apps/Mobile/Desktop Apps)
+# Release History
+v0.1.0 (25/08/22)
+* Added all designed pages(index,update,retr,delete,create_record)
