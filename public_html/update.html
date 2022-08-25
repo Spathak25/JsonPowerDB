@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>update</title>
+        <link rel="stylesheet" href="../style1.css">
+        <script src="http://login2explore.com/jpdb/resources/js/0.0.3/jpdb-commons.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <script src="http://login2explore.com/jpdb/resources/js/0.0.3/jpdb-commons.js"></script>
+
+    </head>
+
+    <body>
+        <h1 style="font-size: 15px;"><strong>Update a record</strong></h1>
+        <div>
+
+            <form id="empForm" method="post">
+                <div class="form-group">
+                    <span><label for="empId">Record ID:</label> <label id="empIdMsg">
+                        </label></span>
+                    <input type="text" class="form-control" name="empId" id="empId" placeholder="Enter Record ID"
+                           required>
+                </div>
+                <div>
+                    <label for="empName">Employee Name:</label>
+                    <input type="text" class="form-control" id="empName"
+                           placeholder="Enter new name" name="empName">
+                </div>
+                <div>
+                    <label for="empEmail">Email:</label>
+                    <input type="email" class="form-control" id="empEmail"
+                           placeholder="Enter new email id"
+                           name="empEmail">
+                </div>
+                <input type="button" class="btn btn-primary" id="empSave" value="Save" onclick="updateRecord();">
+            </form>
+        </div>
+        <script>
+            function validateAndGetFormData() {
+                var empIdVar = $("#empId").val();
+                if (empIdVar === "") {
+                    alert("Employee ID is a required Value");
+                    $("#empId").focus();
+                    return "";
+                }
+                var empNameVar = $("#empName").val();
+                var empEmailVar = $("#empEmail").val();
+
+                if (empNameVar === "" && empEmailVar === "") {
+                    alert("Enter atleast either a new email ID or a new name to perform an update!");
+                    $("#empId").focus();
+                    return "";
+                }
+                var jsonStrObj = {
+                    empId: empIdVar,
+                    empName: empNameVar,
+                    empEmail: empEmailVar,
+                };
+                return JSON.stringify(jsonStrObj);
+            }
+
+            function updateRecord() {
+                var jsonStr = validateAndGetFormData();
+                if (jsonStr === "") {
+                    return;
+                }
+                var removeReqStr = createUPDATERecordRequest("90937478|-31949292991927569|90942731", jsonStr, "SAMPLE", "EMP-REL", parseInt(document.getElementById("empId").value));
+                alert(removeReqStr);
+                jQuery.ajaxSetup({async: false});
+                var resultObj = executeCommandAtGivenBaseUrl(removeReqStr,
+                        "http://api.login2explore.com:5577", "/api/iml");
+                alert(JSON.stringify(resultObj));
+                jQuery.ajaxSetup({async: true});
+                resetForm();
+            }
+
+        </script>
+    </body>
+
+</html>
