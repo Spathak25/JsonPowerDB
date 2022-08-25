@@ -27,3 +27,13 @@ This min-project can perform all CRUD operations using JsonPowerDB.JPDB has read
 # Release History
 v0.1.0 (25/08/22)
 * Added all designed pages(index,update,retr,delete,create_record)
+
+# Database
+![Screenshot (44)](https://user-images.githubusercontent.com/91658220/186706262-a1d85d84-12c2-4852-9a6e-be1a7c37e5e3.png)
+
+# Adding Employee Details
+![Screenshot (45)](https://user-images.githubusercontent.com/91658220/186706843-743ef420-9740-4bc7-8387-8938c7ac3d09.png)
+
+# Deleting Record
+![Screenshot (46)](https://user-images.githubusercontent.com/91658220/186707268-fd1a9a1b-e73d-4e58-97a6-b4bc1f76774c.png)
+
